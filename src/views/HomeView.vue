@@ -1,62 +1,62 @@
 <template>
-  <main class="container">
-    <div class="content">
-      <h1>CRÉE VOTRE SITE WEB COMME UN PROFESSIONNEL</h1>
-      <h2>Bonjour, je suis <span>Milouah Mohammed</span>, un développeur web junior</h2>
-      <p>
+  <main class="home-view__container" id="presentation">
+    <div class="home-view__content">
+      <h1 class="home-view__title">CRÉE VOTRE SITE WEB COMME UN PROFESSIONNEL</h1>
+      <h2 class="home-view__subtitle">Bonjour, je suis <span class="home-view__subtitle-highlight">Milouah Mohammed</span>, un développeur web junior</h2>
+      <p class="home-view__description">
         Dynamique et flexible, je suis animé par la volonté de mettre en pratique mes compétences au sein de votre équipe tout
          en enrichissant mon expérience dans le domaine du développement web et mobile. Structuré, ponctuel et toujours prêt
           à relever de nouveaux défis, je possède une maîtrise trilingue (français, anglais, arabe) et je suis déterminé
            à apporter une contribution significative en tant que stagiaire développeur. Mon objectif est 
            d'apprendre et de participer à la réussite de vos projet.
       </p>
-      <button class="btn">Commencer</button>
+      <button class="home-view__btn">Commencer</button>
     </div>
-    <div class="image">
-      <img src="../assets/decorations/header.png">
+    <div class="home-view__image">
+      <img src="../assets/decorations/header.png" alt="Header Image">
     </div>
   </main>
 
-  <section @mouseenter="mouseInProject" @mouseleave="mouseOutOfProject" class="container" id="achievements">
-    <h3 class="header">MES RÉALISATIONS</h3>
-    <div class="achievements">
-      <div class="card">
-        <span> <img class="icon" src="../assets/icons/cv.png" alt=""></span>
-        <h4>Mon CV En HTML Et CSS</h4>
-        <img v-show="projectFocused" class="sample" src="../assets/project_img/cv/cv_sample.png">
-        <p class="details" @click="openModal(1)"> Plus de details <i class="ri-arrow-right-line"></i></p> 
+  <section @mouseenter="mouseInProject" @mouseleave="mouseOutOfProject" class="home-view__achievements-container" id="achievements">
+    <h3 class="home-view__header">MES RÉALISATIONS</h3>
+    <div class="home-view__achievements">
+      <div class="home-view__card">
+        <span class="home-view__icon"><img class="home-view__icon-image" src="../assets/icons/cv.png" alt="CV Icon"></span>
+        <h4 class="home-view__card-title">Mon CV En HTML Et CSS</h4>
+        <img v-show="projectFocused" class="home-view__sample" src="../assets/project_img/cv/cv_sample.png" alt="CV Sample">
+        <p class="home-view__details" @click="openModal(1)"> Plus de details <i class="ri-arrow-right-line"></i></p> 
       </div>
 
-      <div class="card">
-        <span> <img class="icon" src="../assets/icons/write.png" alt=""></span>
-        <h4>Cahier des charges</h4>
-        <img v-show="projectFocused" class="sample" src="../assets/project_img/cahier_des_charges/cdc_sample.png">
-        <p class="details" @click="openModal(2)"> Plus de details <i class="ri-arrow-right-line"></i></p> 
+      <div class="home-view__card">
+        <span class="home-view__icon"><img class="home-view__icon-image" src="../assets/icons/write.png" alt="Write Icon"></span>
+        <h4 class="home-view__card-title">Cahier des charges</h4>
+        <img v-show="projectFocused" class="home-view__sample" src="../assets/project_img/cahier_des_charges/cdc_sample.png" alt="Cahier des charges Sample">
+        <p class="home-view__details" @click="openModal(2)"> Plus de details <i class="ri-arrow-right-line"></i></p> 
       </div>
 
-      <div class="card">
-        <span> <img class="icon" src="../assets/icons/icons-comment-100.png" alt=""></span>
-        <h4>Espace de commentaire</h4>
-        <img v-show="projectFocused" class="sample" src="../assets/project_img/comments/comment_sample.png">
-        <p class="details" @click="openModal(3)"> Plus de details <i class="ri-arrow-right-line"></i></p> 
+      <div class="home-view__card">
+        <span class="home-view__icon"><img class="home-view__icon-image" src="../assets/icons/icons-comment-100.png" alt="Comment Icon"></span>
+        <h4 class="home-view__card-title">Espace de commentaire</h4>
+        <img v-show="projectFocused" class="home-view__sample" src="../assets/project_img/comments/comment_sample.png" alt="Comment Sample">
+        <p class="home-view__details" @click="openModal(3)"> Plus de details <i class="ri-arrow-right-line"></i></p> 
       </div>
     </div>
   </section>
 
-  <section class="form" id="contact">
-    <h5>Contact Me</h5>
+  <section class="home-view__form" id="contact">
+    <h5 class="home-view__form-header">Contact Me</h5>
     <form action="https://formspree.io/f/xqkrdkwe" method="POST">
-      <p v-show="error" class="error" ref="errorMessage">Tout les champ sont obligatoire</p>
+      <p v-show="error" class="home-view__error" ref="errorMessage">Tout les champ sont obligatoire</p>
 
       <input name="firstname" type ="text" placeholder = "Firstname" ref="firstName" required>
       <input name="lastname" type ="text" placeholder = "Lastname" ref="lastName" required>
       <input name="email" type ="email" placeholder = "Email" ref="email" required>
 
       <textarea name="message" placeholder="Message" ref="message" required></textarea>
-      <button @click="checkfields" class="btn" type="submit">submit</button>
+      <button @click="checkfields" class="home-view__btn" type="submit">submit</button>
     </form>
   </section>
-  <Modal v-if="showModal" :project = "project" @close="openModal()"></Modal>
+  <Modal v-if="showModal" :project="project" @close="openModal()"></Modal>
 </template>
 
 <script>
@@ -75,90 +75,84 @@ export default {
       }
     },
     methods: {
-
-      checkfields(){
-        if ( this.$refs.firstName.value.trim().length === 0 || this.$refs.lastName.value.trim().length === 0 || this.$refs.email.value.trim().length === 0 || this.$refs.message.value.trim().length === 0 ) {
+      checkfields() {
+        if (this.$refs.firstName.value.trim().length === 0 || this.$refs.lastName.value.trim().length === 0 || this.$refs.email.value.trim().length === 0 || this.$refs.message.value.trim().length === 0) {
           this.error = true
-
-          /* ------------------error animation------------------ */
-          this.$refs.errorMessage.classList.add("shake")
-          
+          this.$refs.errorMessage.classList.add("home-view__shake");
           setTimeout(() => {
-            this.$refs.errorMessage.classList.remove('shake');
-          }, 1300);
-
+            this.$refs.errorMessage.classList.remove('home-view__shake');
+          }, 250);
         } else {
           this.error = false
         }
       },
 
-        mouseInProject(){
-          const cards = document.querySelectorAll('.card');
-          const details = document.querySelectorAll(".details")
-          const samples = document.querySelectorAll(".sample")
+      mouseInProject() {
+        const cards = document.querySelectorAll('.home-view__card');
+        const details = document.querySelectorAll(".home-view__details")
+        const samples = document.querySelectorAll(".home-view__sample")
 
-          setTimeout(() => {
-            this.projectFocused = true
-          }, 100);
+        setTimeout(() => {
+          this.projectFocused = true
+        }, 100);
 
-          
-          cards.forEach((card) => {
-            card.classList.add('scrollDown');
-          });
+        cards.forEach((card) => {
+          card.classList.add('home-view__scroll-down');
+        });
+        details.forEach((detail) => {
+          detail.classList.add("home-view__details-fade-in");
+        });
+        samples.forEach((sample) => {
+          sample.classList.add("home-view__fade-down");
+        });
+
+        setTimeout(() => {
           details.forEach((detail) => {
-            detail.classList.add("detailsFadeIn");
+            detail.classList.remove("home-view__details-fade-in");
+          });
+          cards.forEach((card) => {
+            card.classList.remove('home-view__scroll-down');
           });
           samples.forEach((sample) => {
-            sample.classList.add("fadeDown");
+            sample.classList.remove("home-view__fade-down");
           });
-
-          setTimeout(() => {
-            details.forEach((detail) => {
-            detail.classList.remove("detailsFadeIn");
-            });
-            cards.forEach((card) => {
-            card.classList.remove('scrollDown');
-            });
-            samples.forEach((sample) => {
-            sample.classList.remove("fadeDown");
-          });
-          }, 300);
+        }, 300);
       },
 
-      mouseOutOfProject(){
-          const cards = document.querySelectorAll('.card');
-          const details = document.querySelectorAll(".details")
-          const samples = document.querySelectorAll(".sample")
+      mouseOutOfProject() {
+        const cards = document.querySelectorAll('.home-view__card');
+        const details = document.querySelectorAll(".home-view__details")
+        const samples = document.querySelectorAll(".home-view__sample")
 
+        cards.forEach((card) => {
+          card.classList.add('home-view__scroll-up');
+        });
+
+        details.forEach((detail) => {
+          detail.classList.add("home-view__details-fade-out");
+        });
+
+        samples.forEach((sample) => {
+          sample.classList.add("home-view__removing");
+        });
+
+        setTimeout(() => {
+          this.projectFocused = false
           cards.forEach((card) => {
-            card.classList.add('scrollUp');
+            card.classList.remove('home-view__scroll-up');
           });
 
           details.forEach((detail) => {
-            detail.classList.add("detailsFadeOut");
+            detail.classList.remove("home-view__details-fade-out");
           });
 
           samples.forEach((sample) => {
-            sample.classList.add("removing");
+            sample.classList.remove("home-view__removing");
           });
-
-          setTimeout(() => {
-            this.projectFocused = false
-            cards.forEach((card) => {
-            card.classList.remove('scrollUp');
-            });
-
-            details.forEach((detail) => {
-            detail.classList.remove("detailsFadeOut");
-            });
-
-            samples.forEach((sample) => {
-            sample.classList.remove("removing");
-            });
-          }, 300);
+        }, 300);
       },
-      
-      openModal(projectId){
+
+      openModal(projectId) {
         this.project = Object.values(projectsData).filter(item => item.id === projectId)[0]
         this.showModal = !this.showModal
       }
@@ -166,38 +160,26 @@ export default {
 }
 </script>
 
-
 <style>
-.container{
-  max-width: 1200px;
-  margin:auto ;
-  padding: 15rem 2rem 5rem;
-  
-  
-}
-
-.blur{
-  position: fixed;
-  box-shadow: 0 0 1000px 50px #751cc9 ;
-  z-index: -100;
-}
-
-main{
+.home-view__container {
   position: relative;
   display:grid ;
   grid-template-columns: repeat(2,1fr);
   align-items: center ;
   gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  padding: 15rem 2rem 5rem;
 }
 
-main .content h1 {
+.home-view__title {
   margin-bottom: 1rem;
   color: #ffffff;
   font-size: 1rem;
   font-weight: 600;
 }
 
-main .content h2{
+.home-view__subtitle {
   color: #ffffff;
   margin-bottom: 1rem;
   font-size: 3rem;
@@ -205,22 +187,21 @@ main .content h2{
   line-height: 4rem;
 }
 
-main .content h2 span{
+.home-view__subtitle-highlight {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1px #ffffff;
 }
 
-main .content p{
+.home-view__description {
   margin-bottom: 2rem;
   color: #ffffff;
-
 }
 
-main .image{
+.home-view__image {
   position: relative;
-} 
+}
 
-main .image::before{
+.home-view__image::before {
   content: "o";
   position: absolute;
   top: 0;
@@ -232,20 +213,19 @@ main .image::before{
   color: #751cc9;
   opacity: 0.2;
   z-index: -100;
-  }
+}
 
-  main.image img{
-    max-width: 600px;
-    margin: auto; 
-  }
+.home-view__image img {
+  max-width: 600px;
+  margin: auto; 
+}
 
-.card .icon {
+.home-view__card .home-view__icon {
   max-width: 24px;
   height: auto;
 }
 
-
-.sample {
+.home-view__sample {
   max-width: 400px;
   max-height: 200px;
   margin-bottom: 0.5rem;
@@ -255,25 +235,27 @@ main .image::before{
   border-radius: 10px;
   object-fit: cover;
 }
-.fadeDown{
-  animation: fade-down 0.3s ;
+
+.home-view__fade-down {
+  animation: fade-down 0.3s;
 }
-.removing{
+
+.home-view__removing {
   animation: fade-up 0.3s;
 }
-@keyframes fade-up{
+
+@keyframes fade-up {
   0% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
-
-  10%{
+  10% {
     opacity: 1;
   }
-  30%{
+  30% {
     opacity: 0.1;
   }
-  100%{
+  100% {
     opacity: 0;
     transform: translateY(-30px) scale(0.9);
   }
@@ -284,104 +266,112 @@ main .image::before{
     opacity: 0;
     transform: translateY(-30px) scale(0.9);
   }
-
-  10%{
+  10% {
     opacity: 0;
   }
-  30%{
+  30% {
     opacity: 0.1;
   }
-  100%{
+  100% {
     opacity: 1;
     transform: translateY(0px) scale(1);
   }
 }
 
-
-
-section .header{
-    margin-bottom: 1rem;
-    color: #fff;
-    text-align: center;
-    font-size: 2.25rem;
-    font-weight: 600;
+.home-view__achievements-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 15rem 2rem 5rem;
 }
 
-.achievements{
-    margin-top: 4rem;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+.home-view__header {
+  margin-bottom: 1rem;
+  color: #fff;
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: 600;
 }
-.scrollDown {
-  animation: scroll-down 0.1s ;
+
+.home-view__achievements {
+  margin-top: 4rem;
+  padding-bottom: 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
-.scrollUp{
+
+.home-view__scroll-down {
+  animation: scroll-down 0.1s;
+}
+
+.home-view__scroll-up {
   animation: scroll-up 0.3s;
 }
-@keyframes scroll-up{
-  0%{
+
+@keyframes scroll-up {
+  0% {
     height: 19.416rem;
   }
-
-  100%{
+  100% {
     height: 11.125rem;
   }
 }
 
 @keyframes scroll-down {
-  0%{
+  0% {
     height: 10.688rem;
   }
-
-  100%{
+  100% {
     height: 23.345rem;
   }
 }
 
-.achievements .card {
-    background-color: #27272a;
-    padding: 1rem;
-    border: 2px solid transparent;
-    border-radius: 15px;
+.home-view__card {
+  background-color: #27272a;
+  padding: 1rem;
+  border: 2px solid transparent;
+  border-radius: 15px;
 }
 
-.achievements .card:hover{
-    background-color: #323232;
-    border-color: #fff;
-    box-shadow: 20px 40px 70px 25px #751cc979;
+.home-view__card:hover {
+  background-color: #323232;
+  border-color: #fff;
+  box-shadow: 20px 40px 70px 25px #751cc979;
 }
 
-.achievements .card span{
-    max-width:42px ;
-    max-height: 28px;
-    display: inline-block;
-    background-color: #751cc9;
-    padding: 2px 9px;
-    margin-bottom: 1rem;
-    font-size: 1.75rem;
-    color: #fff;
-    border-radius: 5px;
+.home-view__icon-image {
+  max-width:42px ;
+  max-height: 28px;
+  display: inline-block;
+  background-color: #751cc9;
+  padding: 2px 9px;
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+  color: #fff;
+  border-radius: 5px;
 }
 
-.achievements .card h4{
-    margin-bottom: 0.5rem;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: 600;
+.home-view__card-title {
+  margin-bottom: 0.5rem;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
-.achievements .card p{
-    cursor: pointer;
-    color: #fff;
-    transition: all 0.3s ease;
+.home-view__details {
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
-.detailsFadeIn{
-  animation: fade-in 0.3s;
+
+.home-view__details-fade-in{
+  animation: fade-down 0.3s;
 }
-.detailsFadeOut{
+
+.home-view__details-fade-out{
   animation: fade-out 0.3s;
 }
+
 @keyframes fade-out{
   0%{
     opacity: 0.9;
@@ -393,11 +383,8 @@ section .header{
     opacity: 0;
   }
 }
-@keyframes fade-in{
-  
-}
 
-.form{
+.home-view__form {
   max-width: 600px;
   margin: auto;
   padding: 1.6rem ;
@@ -406,14 +393,7 @@ section .header{
   border-radius: 15px;
 }
 
-.form h5{
-  margin-bottom: 0.7rem;
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-form{
+.home-view__form form {
   margin: auto;
   max-width: 550px;
   display: grid;
@@ -421,7 +401,7 @@ form{
   gap: 2rem;
 }
 
-form input, textarea{
+.home-view__form form input, textarea{
   width: 100%;
   height: 100%;
   padding: 0.5rem 0 0.5rem 0.4rem;
@@ -431,7 +411,15 @@ form input, textarea{
   font-size: 1.2rem;
   resize: vertical;
 }
-.error{
+
+.home-view__form-header {
+  margin-bottom: 0.7rem;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.home-view__error {
   color: rgb(255, 255, 255);  
   -webkit-text-stroke: 1px #ff00003a; 
   border: 1px solid rgb(255, 0, 0);
@@ -441,21 +429,54 @@ form input, textarea{
   text-align: center;
 }
 
-@keyframes shake{
+.home-view__btn {
+  background-color: #751cc9;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.home-view__btn:hover {
+  background-color: #5a0c8a;
+}
+
+.home-view__shake {
+  animation: shake 0.2s;
+}
+
+@keyframes shake {
   0% {
     transform: translateX(0);
   }
-  40% {
-    transform: translateX(10px);
+  25% {
+    transform: translateX(-5px);
   }
-  100%{
-    transform: translateX(-10px);
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 
-.shake{
-  animation: shake .13s 3;
+@media screen and (max-width: 767px) {
+  .home-view__content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 }
 
-
+@media screen and (max-width: 500px) {
+  .home-view__subtitle {
+    font-size: 2.5rem;
+  }
+}
 </style>
+
