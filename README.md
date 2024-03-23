@@ -1,5 +1,7 @@
 # my-portfolio
-
+```
+make sure you have installed node.js v20.11.1 or newer
+```
 ## Project setup
 ```
 npm install
@@ -9,6 +11,7 @@ npm install
 ```
 npm run serve
 ```
+
 
 ### Compiles and minifies for production
 ```
