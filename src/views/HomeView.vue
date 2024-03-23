@@ -10,7 +10,7 @@
            à apporter une contribution significative. Mon objectif est 
            d'apprendre et de participer à la réussite de vos projet.
       </p>
-      <button class="home-view__btn">Commencer</button>
+      <router-link to="/jobForum" class="home-view__btn">Commencer</router-link>
     </div>
     <div class="home-view__image">
       <img src="../assets/decorations/header.png" alt="Header Image">
@@ -464,16 +464,24 @@ export default {
   }
 }
 
-@media screen and (max-width: 767px) {
-  .home-view__content {
-    grid-template-columns: 1fr;
-    text-align: center;
+@media (width < 900px) {
+  .home-view__container {
+    grid-template-columns: repeat(1,1fr);
+  }
+  .home-view__image {
+    grid-area: 1/1/2/2;
+  }
+  .home-view__achievements{
+    grid-template-columns: repeat(2,1fr);
   }
 }
 
-@media screen and (max-width: 500px) {
-  .home-view__subtitle {
-    font-size: 2.5rem;
+@media (width < 600px) {
+  .home-view__image::before {
+    display: none;
+  }
+  .home-view__achievements{
+    grid-template-columns: repeat(1,1fr);
   }
 }
 </style>
