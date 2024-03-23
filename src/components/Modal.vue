@@ -6,15 +6,15 @@
         <section class="modal__container">
           <div class="modal__slider-wrapper">
             <div class="modal__slider">
-              <img v-for="(imgSrc, index) in project.imgSrc" :key="'slide-' + index" :id="'slide-' + index " :src="imgSrc">
+              <img v-for="(imgSrcAlt, index) in project.imgSrcAlt" :key="'slide-' + index" :id="'slide-' + index " :src="imgSrcAlt[0]" :alt="imgSrcAlt[1]">
             </div>
             <div class="modal__slider-nav">
-              <a v-for="(img, index) in project.imgSrc" :key="'nav-' + index" :href="'#slide-' + index"></a>
+              <a v-for="(img, index) in project.imgSrcAlt" :key="'nav-' + index" :href="'#slide-' + index"></a>
             </div>
           </div>
         </section>
         <div class="modal__project-info">
-          <h2>Date de création : <time>{{ project.date }}</time></h2>
+          <h2>Date de création : <time :datetime="project.date">{{ project.date }}</time></h2>
           <h3>Les technologies utilisées :</h3>
           <ul class="modal__technology-list">
             <li v-for="technologie in project.technologies" :key="technologie" class="modal__technology">{{ technologie }}</li>
@@ -39,7 +39,7 @@
   }
   </script>
   
-  <style scoped>
+  <style >
   .modal-backdrop {
     z-index: 20;
     top: 0;

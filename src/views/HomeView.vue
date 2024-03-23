@@ -7,7 +7,7 @@
         Dynamique et flexible, je suis animé par la volonté de mettre en pratique mes compétences au sein de votre équipe tout
          en enrichissant mon expérience dans le domaine du développement web et mobile. Structuré, ponctuel et toujours prêt
           à relever de nouveaux défis, je possède une maîtrise trilingue (français, anglais, arabe) et je suis déterminé
-           à apporter une contribution significative en tant que stagiaire développeur. Mon objectif est 
+           à apporter une contribution significative. Mon objectif est 
            d'apprendre et de participer à la réussite de vos projet.
       </p>
       <button class="home-view__btn">Commencer</button>
@@ -28,7 +28,7 @@
       </div>
 
       <div class="home-view__card">
-        <span class="home-view__icon"><img class="home-view__icon-image" src="../assets/icons/write.png" alt="Write Icon"></span>
+        <span class="home-view__icon"><img class="home-view__icon-image" src="../assets/icons/write.png" alt="Notebook Icon"></span>
         <h4 class="home-view__card-title">Cahier des charges</h4>
         <img v-show="projectFocused" class="home-view__sample" src="../assets/project_img/cahier_des_charges/cdc_sample.png" alt="Cahier des charges Sample">
         <p class="home-view__details" @click="openModal(2)"> Plus de details <i class="ri-arrow-right-line"></i></p> 
@@ -188,7 +188,7 @@ export default {
 }
 
 .home-view__subtitle-highlight {
-  -webkit-text-fill-color: transparent;
+  color: #18181b;
   -webkit-text-stroke: 1px #ffffff;
 }
 
@@ -397,7 +397,6 @@ export default {
   margin: auto;
   max-width: 550px;
   display: grid;
-  grid-template-rows: (5,1fr);
   gap: 2rem;
 }
 
@@ -421,7 +420,6 @@ export default {
 
 .home-view__error {
   color: rgb(255, 255, 255);  
-  -webkit-text-stroke: 1px #ff00003a; 
   border: 1px solid rgb(255, 0, 0);
   border-radius: 5px;
   padding: 5px; 
