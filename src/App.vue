@@ -9,7 +9,7 @@
       <span class="header__nav-blur"></span>
       <span class="header__nav-blur"></span>
       <ul class="header__nav-links">
-        <li class="header__nav-link"><router-link to="/">Home</router-link></li>
+        <li class="header__nav-link"><router-link to="/">Accueil</router-link></li>
         <li class="header__nav-link"><a @click="menuFocusUpdate" href="#presentation">Présentation</a></li>
         <li class="header__nav-link"><a @click="menuFocusUpdate" href="#achievements">Réalisations</a></li>
         <li class="header__nav-link"><a @click="menuFocusUpdate" href="#contact">Contact</a></li>
@@ -27,16 +27,13 @@
       <a href="https://www.linkedin.com/in/milouah-mohammed/" target="_blank"><img class="footer__media-icon" alt="Icône Linkedin" src="./assets/icons/linkedin.png"></a>
       <a href="https://github.com/IekoTsu" target="_blank"><img class="footer__media-icon" alt="Icône GitHub" src="./assets/icons/GitHub.png"></a>
     </div>
-    <p class="footer__update">Dernière mise à jour le <time class="footer__update-time" datetime="2024-02-27">21 mars 2024</time></p>
+    <p class="footer__update">Dernière mise à jour le <time class="footer__update-time" datetime="2024-02-27">23 mars 2024</time></p>
   </footer>
 </template>
 
 <script>
 export default {
   name: 'App',
-  data() {
-    return {}
-  },
   methods: {
     menuFocusUpdate() {
       setTimeout(() => {
@@ -190,5 +187,11 @@ body {
   opacity: 70%;
   width: 64px;
   height: auto;
+}
+
+@media (width <900px){
+  .header__nav-link{
+    display: none;
+  }
 }
 </style>
