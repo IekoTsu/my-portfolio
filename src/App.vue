@@ -3,24 +3,25 @@
     <nav class="header__nav">
       <div class="header__nav-logo">
         <a href="#">
-          <img src="./assets/icons/logo.png" alt="Logo"></img>
+          <img src="./assets/icons/logo.png" alt="Logo">
         </a>
       </div>
       <span class="header__nav-blur"></span>
       <span class="header__nav-blur"></span>
       <ul class="header__nav-links">
         <li class="header__nav-link"><router-link to="/">Home</router-link></li>
-        <li class="header__nav-link"><a @click="menuUpdate" href="#presentation">Présentation</a></li>
-        <li class="header__nav-link"><a @click="menuUpdate" href="#achievements">Réalisations</a></li>
-        <li class="header__nav-link"><a @click="menuUpdate" href="#contact">Contact</a></li>
+        <li class="header__nav-link"><a @click="menuFocusUpdate" href="#presentation">Présentation</a></li>
+        <li class="header__nav-link"><a @click="menuFocusUpdate" href="#achievements">Réalisations</a></li>
+        <li class="header__nav-link"><a @click="menuFocusUpdate" href="#contact">Contact</a></li>
       </ul>
-      <a href="#contact"><button class="header__btn">Hire Me</button></a>
+      <a href="#contact" class="header__btn">Hire Me</a>
     </nav>
   </header>
+
   <div class="page-content">
-    <router-view/>
+    <router-view></router-view>
   </div>
-  <!-- ------------------------------------------------------ -->
+
   <footer class="footer">
     <div class="footer__professional-media">
       <a href="https://www.linkedin.com/in/milouah-mohammed/" target="_blank"><img class="footer__media-icon" alt="Icône Linkedin" src="./assets/icons/linkedin.png"></a>
@@ -37,7 +38,7 @@ export default {
     return {}
   },
   methods: {
-    menuUpdate() {
+    menuFocusUpdate() {
       setTimeout(() => {
         console.log("hi");
         const hash = window.location.hash;
